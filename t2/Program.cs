@@ -38,33 +38,21 @@ void Print2DArray(int[,] array)
     }
 }
 
-(int, int) FindElement(int[,] array, int number)
-{
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            if (number == array[i, j])
-            {
-                return (i, j);
-            }
-        }
-    }
-    return (-1, -1);
-}
-
 int rows = ReadInt("Введите количество строк");
 int columns = ReadInt("Введите количество колонок");
 int[,] arr = Generate2DArray(rows, columns);
 Print2DArray(arr);
-int coordinate = ReadInt($"Введите номер строки для поиска  ");
-(int x, int y) = FindElement(arr, coordinate);
-if (x != -1)
+Console.Write("Введите номер строки: ");
+int coordinate1 = Convert.ToInt32(Console.ReadLine()) - 1;
+Console.Write("Введите номер столбца: ");
+int coordinate2 = Convert.ToInt32(Console.ReadLine()) - 1;
+Console.WriteLine();
+if (coordinate1 < 0 | coordinate1 > arr.GetLength(0) - 1 | coordinate2 < 0 | coordinate2 > arr.GetLength(1) - 1)
 {
-    int nmb = 0;
-    System.Console.WriteLine($"Ваше число {nmb + 1}");
+    Console.WriteLine("Элемент не существует  ");
 }
 else
 {
-    System.Console.WriteLine("Такого эллемента нет в массиве");
+    Console.WriteLine("Значение элемента массива = {0}", arr[coordinate1, coordinate2]);
 }
+Console.ReadLine();
